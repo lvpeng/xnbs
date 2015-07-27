@@ -113,7 +113,19 @@ http://jsfiddle.net/TahmidTanzim/N9Vqk/embedded/result/
  角色 ，权限
     FIXME: 一人可有多重角色
 
- 
- 
+
+
+ ========================================
+ 1 清理代码
+
+ 2 Node.js 后台重构
+
+ 3 动态懒加载JS文件
+
+ 4 响应式适配
+
+ 5 gulp bower npm
+
+ 6 css : Sass
  
  
