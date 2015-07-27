@@ -1,0 +1,52 @@
+<form class="form-horizontal" name="addUserForm" ng-submit="saveUser(addUserForm.$valid)" novalidate>
+    <table class="table movietable">
+        <tr>
+            <td><h3>添加用户</h3></td>
+
+        </tr>
+        <tr>
+            <td>检测人姓名</td>
+            <td class="col-sm-10" ng-class="{'has-error': addUserForm.uName.$invalid && addUserForm.uName.$dirty }">
+                <input class="form-control" type="text" ng-model="user.userName" name="uName" ng-required="true"/>
+                <span ng-show="addUserForm.uName.$invalid && addUserForm.uName.$dirty " class="help-block">检测人姓名是必填项</span>
+            </td>
+        </tr>
+        <tr>
+            <td>检测人密码</td>
+            <td class="col-sm-10" ng-class="{'has-error': addUserForm.pwd.$invalid && addUserForm.pwd.$dirty }">
+                <input type="text" class="form-control" ng-model="user.loginPwd" ng-init="user.loginPwd='666666'" name="pwd" ng-required="true" maxlength="6"/>
+                <span ng-show="addUserForm.pwd.$invalid && addUserForm.pwd.$dirty" class="help-block">检测人密码不能为空</span>
+            </td>
+        </tr>
+        <tr>
+            <td>检测人电话</td>
+            <td class="col-sm-10" ng-class="{'has-error': addUserForm.telephone.$invalid && addUserForm.telephone.$dirty }">
+                <input type="text" class="form-control" ng-model ="user.userMobile" name="telephone" ng-pattern="/^1\d{10}$/" ng-required="true"/>
+                <span ng-show="addUserForm.telephone.$error.required && !addUserForm.telephone.$pristine" class="help-block">手机号必填</span>
+                <span ng-show="addUserForm.telephone.$error.pattern && !addUserForm.telephone.$pristine" class="help-block">手机号为<b>11</b>位有效数字</span>
+            </td>
+        </tr>
+        <!--<tr>-->
+            <!--<td>检测人权限</td>-->
+            <!--<td class="col-sm-10" ng-class="{'has-error': addUserForm.role.$invalid && addUserForm.role.$dirty }">-->
+                <!--<select  class="form-control" ng-model="selectedItem" ng-options="role.name for role in roles" name="role" required>-->
+
+                <!--</select>-->
+                <!--<span ng-show="addUserForm.role.$error.required && addUserForm.role.$dirty" class="help-block">请选择权限</span>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <tr>
+            <td>检测人权限</td>
+            <td class="col-sm-10" ng-class="{'has-error': addUserForm.role.$invalid && addUserForm.role.$dirty }">
+                <select  class="form-control" ng-model="role" ng-options="role.name for role in roles" name="role" required>
+                    <option value="">--请选择权限--</option>
+                </select>
+                <span ng-show="addUserForm.role.$error.required && addUserForm.role.$dirty" class="help-block">请选择权限</span>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button type="submit" class="btn btn-primary" ng-disabled="addUserForm.$invalid">创建</button>
+    </div>
+
+</form>

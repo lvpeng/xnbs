@@ -1,0 +1,62 @@
+<form class="form-horizontal" name="reqEditForm" ng-submit="updateReq(reqEditForm.$valid)" novalidate>
+    <table class="table movietable">
+        <tr>
+            <td><h3>工单编辑</h3></td>
+        </tr>
+        <tr>
+            <td class="col-sm-2">工单编号</td>
+            <td class="col-sm-10">{{req.requestId}}</td>
+        </tr>
+        <tr>
+            <td>被检测人姓名</td>
+            <td class="col-sm-10" ng-class="{'has-error': reqEditForm.uName.$invalid && reqEditForm.uName.$dirty }">
+                <input class="form-control" type="text" ng-model="req.personName" name="uName" required/>
+                <span ng-show="reqEditForm.uName.$invalid && reqEditForm.uName.$dirty" class="help-block">被检测人姓名是必填项</span>
+            </td>
+        </tr>
+        <tr>
+            <td>被检测人性别</td>
+            <td class="col-sm-10" ng-class="{'has-error': reqEditForm.gender.$invalid && reqEditForm.gender.$dirty}">
+                <select class="form-control" ng-model="req.gender" name="gender" required>
+                    <option value="">--请选择--</option>
+                    <option value="F" >女</option>
+                    <option value="M" >男</option>
+                </select>
+                <span ng-show="reqEditForm.gender.$invalid && reqEditForm.gender.$dirty" class="help-block">请选择性别</span>
+        </tr>
+        <tr>
+            <td>工单状态</td>
+            <td class="col-sm-10">{{req.state}}</td>
+        </tr>
+        <!--<tr>-->
+            <!--<td>检查单优先级</td>-->
+            <!--<td class="col-sm-10"> <input class="form-control" type="text" ng-model="req.priority"/></td>-->
+        <!--</tr>-->
+        <tr>
+            <td>样本列表</td>
+            <td>
+                <span>头发</span>
+            </td>
+        </tr>
+        <tr>
+            <td>检测包列表</td>
+            <td>
+                <label ng-repeat="pkg in pkgs">
+                <input
+                        type="checkbox"
+                        name="selectedPkgs[]"
+                        value="{{pkg.packageName}}"
+                        ng-model="pkg.selected"
+                        > {{pkg.packageName}}
+                </label>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input type="button" class="btn btn-primary" value="返回" ng-click="doBack()"/>
+        <input type="submit" class="btn btn-primary" value="保存" ng-disabled="reqEditForm.$invalid"/>
+    </div>
+
+
+</form>
+

@@ -1,0 +1,78 @@
+<!--新建用户-->
+<div class="row-fluid">
+<div class="widget widget-padding span12">
+    <div class="widget-header">
+        <i class="icon-list-alt"></i><h5>新建用户</h5>
+        <div class="widget-buttons">
+            <a href="#user"><i class="icon-share-alt"></i> 返回</a>
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-forms clearfix">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">用户账号：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.loginId" type="text" placeholder="最小长度6位，数字与字母的组合">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">密码：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.loginPwd" type="password" placeholder="请输入您的密码，最小长度6位">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">您的姓名：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.userName" type="text" placeholder="请输入您的姓名">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">用户角色：</label>
+                    <div class="controls">
+                        <select class="span7" ng-model="selected" ng-options="role.roleName for role in roles">
+                            <option value="">-- 请选择 --</option>
+                        </select>
+                        {{selected}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">联系电话：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.userMobile" type="telephone" placeholder="请输入您的联系电话">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">公司名称：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.userCompany" type="text" placeholder="请输入公司名称">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">部门：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.userDept" type="text" placeholder="请输入您所属的部门" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">职位：</label>
+                    <div class="controls">
+                        <input class="span7" ng-model="newUser.userDuty" type="text" placeholder="请输入您的职位" >
+                    </div>
+                </div>
+                <!--<div class="control-group">-->
+                    <!--<label class="control-label">Text Area</label>-->
+                    <!--<div class="controls">-->
+                        <!--<textarea class="span7" rows="5" style="height:100px;"></textarea>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
+    <div class="widget-footer">
+        <button class="btn btn-primary" ng-click="saveUser()" type="submit">提交</button>
+        <a href="#user" class="btn" type="button">取消</a>
+    </div>
+</div>
+</div>

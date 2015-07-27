@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd   
+                        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd   
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	
+	
+	<tx:annotation-driven/>
+
+    <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/db_xnbs?characterEncoding=utf8&amp;zeroDateTimeBehavior=round" />
+			<property name="username" value="xnbs" />
+			<property name="password" value="kscloud#xnbs"/>
+
+			<property name="maxActive" value="50" /> 
+		    <property name="maxIdle" value="20" /> 
+		    <property name="minIdle" value="5" /> 
+		    <property name="maxWait" value="600000" /> 
+		    <property name="testOnBorrow" value="true"/>
+		    <property name="initialSize" value="1"/> 
+		    <property name="testWhileIdle" value="true"/> 
+		    <property name="logAbandoned" value="true"/> 
+			<property name="removeAbandoned" value="true"/>
+			<property name="removeAbandonedTimeout" value="180"/>  
+
+			 <property name="validationQuery" value="select 1"/> 
+				
+	</bean>
+
+	<!-- SqlMap setup for iBATIS Database Layer -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+	    <property name="configLocation" value="classpath:com/kscloud/xnbs/ds/SqlMapConfig.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	<bean id="XnbsTabCheckItemListDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabCheckItemListDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	<bean id="XnbsTabPackageListDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabPackageListDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+       <bean id="XnbsTabPackageItemRelDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabPackageItemRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabOrderDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabOrderDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabRequestDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabRequestDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabTaskListDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabTaskListDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabDetectReportDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabDetectReportDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabMailListDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabMailListDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabOrderMailRelDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabOrderMailRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabSampleListDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabSampleListDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="XnbsTabRequestSampleRelDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabRequestSampleRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="XnbsTabRequestPackageRelDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabRequestPackageRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="XnbsMailSampleRelDAO" class="com.kscloud.xnbs.ds.dao.XnbsMailSampleRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        
+        <bean id="SysTabUserListDAO" class="com.kscloud.xnbs.ds.dao.SysTabUserListDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        <bean id="SysTabUserRoleRelDAO" class="com.kscloud.xnbs.ds.dao.SysTabUserRoleRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="SysTabRoleListDAO" class="com.kscloud.xnbs.ds.dao.SysTabRoleListDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="SysTabRoleResourceRelDAO" class="com.kscloud.xnbs.ds.dao.SysTabRoleResourceRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="XnbsTabAclDeviceDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabAclDeviceDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="XnbsTabUserDeviceRelDAO" class="com.kscloud.xnbs.ds.dao.XnbsTabUserDeviceRelDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+        
+        <bean id="XnbsUdfDAO" class="com.kscloud.xnbs.ds.udf.XnbsUdfDAOImpl">
+                <property name="sqlMapClient" ref="sqlMapClient"/>
+        </bean>
+</beans>

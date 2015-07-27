@@ -1,0 +1,45 @@
+<table class="table movietable">
+    <tr>
+        <td><h3>个人任务详情</h3></td>
+
+    </tr>
+    <tr>
+        <td>任务编号</td>
+        <td>{{task.taskId}}</td>
+    </tr>
+    <tr>
+        <td>任务分配人</td>
+        <td>{{task.distributUserName}}</td>
+    </tr>
+    <tr>
+        <td>分配时间</td>
+        <td>{{task.distributTime}}</td>
+    </tr>
+    <tr>
+        <td>检测状态</td>
+        <td>{{task.taskCompleteState}}</td>
+    </tr>
+    <tr>
+        <td>任务完成时间</td>
+        <td>{{task.taskCompleteTime}}</td>
+    </tr>
+    <tr>
+        <td>任务列表</td>
+        <td>
+            <ul ng-repeat="task in currUserTask">
+                <li style="cursor: pointer;">
+
+                    <!--<a ui-sref="home.taskDetail({reqId:request.requestId})">{{task.taskId}}</a>-->
+                    <a >{{task.taskId}}</a>
+                    <a ng-click="launchSimpleModal(request.requestId)" class="btn-small btn-danger">完成</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="home.orderEdit({orderId:order.orderId})">Edit</a>
+
+</div>
+
+

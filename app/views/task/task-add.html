@@ -1,0 +1,38 @@
+<form class="form-horizontal" ng-submit="saveReq()">
+    <table class="table movietable">
+        <tr>
+            <td><h3>工单创建</h3></td>
+
+        </tr>
+        <tr>
+            <td>检测人姓名</td>
+            <td><input type="text" ng-model="req.personName"/></td>
+        </tr>
+        <tr>
+            <td>检测人年龄</td>
+            <td><input type="text" ng-model ="req.age"/></td>
+        </tr>
+        <tr>
+            <td>检测人性别</td>
+            <td>
+                <select ng-model="sex" >
+                    <option ng-init="">--请选择--</option>
+                    <option value="f" ng-selected="sex==='f'">女</option>
+                    <option value="m" ng-selected="sex==='m'">男</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>检测状态</td>
+            <td><input type="text" ng-model="req.state"/></td>
+        </tr>
+        <tr>
+            <td>工单创建时间</td>
+            <td><input type="text" ng-model="req.createTime"/></td>
+        </tr>
+    </table>
+    <div>
+        <input type="submit" class="btn btn-primary" value="创建"/>
+    </div>
+
+</form>

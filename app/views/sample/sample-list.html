@@ -1,0 +1,73 @@
+<!-- 样本列表  -->
+<div class="row-fluid">
+    <div class="widget widget-padding span12">
+        <div class="widget-header">
+            <i class="icon-group"></i>
+            <h5>样本</h5>
+            <div class="widget-buttons">
+                <a href="#newSample"><i class="icon-plus"> 新建样本</i></a>
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="row-fluid">
+                <div class="dataTables_length">
+                    <label>
+                        样本编号:
+                        <input type="text" ng-model="select.sample_id" style="margin:0;" value=""/>
+                        样本姓名:
+                        <input type="text" ng-model="select.sample_name" style="margin:0;" value=""/>
+                        &nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-success" ng-click="searchItem()">查询</button>
+                    </label>
+                </div>
+            </div>
+            <table id="users" class="table table-striped table-bordered dataTable">
+                <thead>
+                <tr>
+                    <th ng-repeat="title in titles" ng-click="condition.toggle(title)">
+                        {{title.label}}
+                        <i ng-if="title.name == condition.order" class="{{condition.orderType|orderClass}} fr"></i>
+                    </th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="sample in samples">
+                    <td>{{sample.sampleId}}</td>
+                    <td>{{sample.sampleName}}</td>
+                    <td>{{sample.sampleState}}</td>
+                    <td>{{sample.priority}}</td>
+                    <td>{{sample.putUserId}}</td>
+                    <td>{{sample.putTime | date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                    <td>{{sample.storagePosition}}</td>
+                    <td>{{sample.disposalUserId}}</td>
+                    <td>{{sample.disposalType}}</td>
+                    <td>{{sample.disposalTime | date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                    <td>{{sample.distributState}}</td>
+                    <td>{{sample.opFlag}}</td>
+                    <td>
+                        <a href="#editUserRole/{{sample.userid}}" class="btn btn-primary"><i class="icon-edit"></i> 修改</a>
+                        <button class="btn btn-primary" ng-click="showSamplePop()" data-target="#del_sample_modal" type="button"><i class="icon-trash"></i> 删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- 分页 -->
+            <pagination dataCallback="getSampleList" data="samples" size="10"></pagination>
+        </div> <!-- /widget-body -->
+    </div> <!-- /widget -->
+    <!-- example modal -->
+    <div id="del_sample_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">删除提示</h3>
+        </div>
+        <div class="modal-body">
+            确认删除[ <span style="font-size:16px;font-weight:bold;color:#f00;">{{cur_sample.sampleName}}</span> ]吗？
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            <button class="btn btn-primary" ng-click="delConfirm()">确认</button>
+        </div>
+    </div>
+</div> <!-- /row-fluid -->

@@ -1,0 +1,37 @@
+<!-- 检测项列表 -->
+<div class="row-fluid">
+    <div class="widget widget-padding span12">
+        <div class="widget-header">
+            <i class="icon-group"></i>
+            <h5>检测项列表</h5>
+        </div>
+        <div class="widget-body">
+            <table id="checkItems" class="table table-striped table-bordered dataTable">
+                <thead>
+                <tr>
+                    <th>检测项编号</th>
+                    <th>检测项名称</th>
+                    <th>检测项类型</th>
+                    <th>项目工作量(耗时)</th>
+                    <th>检测项描述</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.itemId}}</td>
+                    <td>{{item.itemName}}</td>
+                    <td>{{item.itemType}}</td>
+                    <td>{{item.item_workload}}</td>
+                    <td>{{item.itemDesc}}</td>
+                    <td>
+                        <a ng-click="editItem(item.itemId)" class="btn btn-small btn-primary">edit</a>
+                        <a ng-click="deleteItem(item.itemId)" class="btn btn-small btn-danger">delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a ng-click="addNewItem()" class="btn btn-small btn-success">创建新检测项</a>
+        </div> <!-- /widget-body -->
+    </div> <!-- /widget -->
+</div> <!-- /row-fluid -->

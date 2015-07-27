@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="xnds_udf" >
+  <resultMap id="xnbs_udf_TaskListResult" class="com.kscloud.xnbs.ds.udf.XnbsUdfTask" >
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="request_id" property="requestId" jdbcType="VARCHAR" />
+    <result column="distribut_user_id" property="distributUserId" jdbcType="VARCHAR" />
+    <result column="distribut_time" property="distributTime" jdbcType="TIMESTAMP" />
+    <result column="task_complete_time" property="taskCompleteTime" jdbcType="TIMESTAMP" />
+    <result column="task_complete_state" property="taskCompleteState" jdbcType="VARCHAR" />
+    <result column="detect_user_id" property="detectUserId" jdbcType="VARCHAR" />
+    <result column="distribut_user_name" property="distributUserName" jdbcType="VARCHAR" />
+    <result column="detect_user_name" property="detectUserName" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  
+ <select id="xnbs_udf_task_select_paged" parameterClass="java.util.Map"  resultMap="xnbs_udf_TaskListResult">
+   select task_id, request_id, distribut_user_id, distribut_time, task_complete_time, 
+             task_complete_state, detect_user_id, distribut_user_name, detect_user_name
+    from view_task_with_name
+    <isParameterPresent>
+      <isNotNull property="whereCause">
+        where $whereCause$
+      </isNotNull>
+      <isNotNull property="orderConditions">
+        order by $orderConditions$
+      </isNotNull>
+      <isNotNull property="limitClauseStart">
+        limit $limitClauseStart$, $limitClauseCount$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  
+  <select id="xnbs_udf_task_select_paged_tcount" parameterClass="java.util.Map"  resultClass="java.lang.Integer">
+    select count(1)
+    from view_task_with_name
+    <isParameterPresent>
+      <isNotNull property="whereCause">
+        where $whereCause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  
+  
+   <select id="selectBySql" resultClass="java.util.HashMap"   remapResults="true"   parameterClass="java.util.HashMap"> 
+        <isNotEmpty property="sql">$sql$</isNotEmpty> 
+   </select>    
+   
+   <select id="modifyBySql" resultClass="java.lang.Integer"   remapResults="true"   parameterClass="java.util.HashMap"> 
+        <isNotEmpty property="sql">$sql$</isNotEmpty> 
+   </select>    
+    
+</sqlMap>

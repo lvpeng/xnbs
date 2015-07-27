@@ -1,0 +1,31 @@
+<form class="form-horizontal" ng-submit="saveSample()">
+    <table class="table movietable">
+        <tr>
+            <td><h3>添加样本</h3></td>
+
+        </tr>
+        <tr>
+            <td>所属工单编号</td>
+            <td>{{reqId}}</td>
+        </tr>
+        <!--<tr>-->
+            <!--<td>样本ID</td>-->
+            <!--<td><input type="text" ng-model="sample.sampleId"/></td>-->
+        <!--</tr>-->
+        <tr>
+            <td>样本名称</td>
+            <td class="col-sm-10"><input class="form-control" type="text" ng-model="sample.sampleName"/></td>
+        </tr>
+
+        <tr>
+            <td>样本状态</td>
+            <td class="col-sm-10">
+                <select class="form-control" ng-model="selectedItem" ng-options="state.name for state in states"></select>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input type="submit" class="btn btn-primary" value="创建"/>
+    </div>
+
+</form>

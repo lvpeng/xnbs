@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Create a new item</h1>
+
+  <form novalidate="novalidate" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="itemName">检测项名称:</label>
+
+      <div class="controls">
+        <input type="text" id="itemName" ng-model="item.itemName" placeholder="检测项名称"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="itemType">检测项类型:</label>
+
+      <div class="controls">
+        <input type="text" id="itemType" ng-model="item.itemType" placeholder="检测项类型"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="itemDesc">检测项描述:</label>
+
+      <div class="controls">
+        <input type="text" id="itemDesc" ng-model="item.itemDesc" placeholder="检测项描述"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <a ng-click="updateItem()" class="btn btn-small btn-primary">update item</a>
+        <a ng-click="cancel()" class="btn btn-small btn-primary">cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,42 @@
+<table class="table movietable">
+    <tr>
+        <td><h3>样本详情</h3></td>
+    </tr>
+    <tr>
+        <td>样本编号</td>
+        <td>{{sample.sampleId}}</td>
+    </tr>
+    <tr>
+        <td>所属工单编号</td>
+        <td>{{req.orderId}}</td>
+    </tr>
+    <tr>
+        <td>检测人</td>
+        <td>{{req.personName}}</td>
+    </tr>
+    <tr>
+        <td>检测人性别</td>
+        <td>{{req.gender}}</td>
+    </tr>
+    <tr>
+        <td>检查单优先级</td>
+        <td>{{req.priority}}</td>
+    </tr>
+    <tr>
+        <td>样本列表</td>
+        <td>
+            <ul>
+                <li style="cursor: pointer;" ng-repeat="sample in samples">
+                    <a ui-sref="home.sampleDetail({sampleId:sample.sampleId})">{{sample.sampleName}}</a>
+                    <a ng-click="launchSimpleModal(sample.sampleId)" class="btn-small btn-danger">删除</a>
+                </li>
+            </ul>
+            <button class="btn-small btn-primary" ui-sref="home.sampleAdd({reqId: req.requestId})">添加样本</button>
+
+        </td>
+    </tr>
+</table>
+
+<div>
+    <a class="btn btn-primary" ui-sref="home.reqEdit({reqId:req.requestId})">Edit</a>
+</div>

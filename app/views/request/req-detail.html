@@ -1,0 +1,65 @@
+<table class="table movietable">
+    <tr>
+        <td><h3>工单详情</h3></td>
+    </tr>
+    <tr>
+        <td>工单编号</td>
+        <td>{{req.requestId}}</td>
+    </tr>
+    <tr>
+        <td>所属订单编号</td>
+        <td>{{req.orderId}}</td>
+    </tr>
+    <tr>
+        <td>检测人</td>
+        <td>{{req.personName}}</td>
+    </tr>
+    <tr>
+        <td>检测人性别</td>
+        <!--<td>{{req.gender}}</td>-->
+        <td class="col-sm-10" ng-switch on="req.gender">
+            <!--<td  ng-switch-when="F">女</td>-->
+            <!--<td ng-switch-when="M">男</td>-->
+            <span ng-switch-when="F">女</span>
+            <span ng-switch-when="M">男</span>
+        </td>
+    </tr>
+    <!--<tr>-->
+        <!--<td>检查单优先级</td>-->
+        <!--<td>{{req.priority}}</td>-->
+    <!--</tr>-->
+    <tr>
+        <td>工单状态</td>
+        <td>{{req.state}}</td>
+    </tr>
+    <tr>
+        <td>样本列表</td>
+        <td>
+            <ul>
+                <li>头发</li>
+                <!--<li style="cursor: pointer;" ng-repeat="sample in samples">-->
+                <!--<a ui-sref="home.sampleDetail({sampleId:sample.sampleId})">{{sample.sampleName}}</a>-->
+                <!--<a ng-click="launchSimpleModal(sample.sampleId)" class="btn-small btn-danger">删除</a>-->
+                <!--</li>-->
+            </ul>
+            <!--<button class="btn btn-small btn-primary" ui-sref="home.sampleAdd({reqId: req.requestId})">添加样本</button>-->
+
+        </td>
+    </tr>
+    <tr>
+        <td>检测包列表</td>
+        <td>
+            <ul>
+                <li ng-repeat="pkg in selectedPkgs">{{pkg.packageName}}</li>
+            </ul>
+        </td>
+    </tr>
+
+</table>
+
+<div>
+    <!--<a class="btn btn-success" >完成了</a>-->
+    <a class="btn btn-info" ng-click="grabTask(req)" ng-show="req.state=='未分配'">抢单</a>
+    <a class="btn btn-primary" ng-click="doBack()">返回</a>
+    <a class="btn btn-primary" ui-sref="home.reqEdit({reqId:req.requestId})">编辑</a>
+</div>

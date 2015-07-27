@@ -1,0 +1,30 @@
+<table class="table movietable">
+    <tr>
+        <td><h3>用户详情</h3></td>
+    </tr>
+    <tr>
+        <td>用户编号</td>
+        <td>{{user.userid}}</td>
+    </tr>
+    <tr>
+        <td>检测人姓名</td>
+        <td>{{user.userName}}</td>
+    </tr>
+    <!--<tr>-->
+        <!--<td>检测人密码</td>-->
+        <!--<td>{{user.loginPwd}}</td>-->
+    <!--</tr>-->
+
+    <tr>
+        <td>电话</td>
+        <td>{{user.userMobile}}</td>
+    </tr>
+    <tr>
+        <td>角色</td>
+        <td>{{user.roleName}}</td>
+    </tr>
+</table>
+
+<div>
+    <a class="btn btn-primary" ui-sref="home.userEdit({userId:user.userid})">Edit</a>
+</div>

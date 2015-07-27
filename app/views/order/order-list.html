@@ -1,0 +1,103 @@
+    <!-- /.row -->
+    <div class="row">
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <label class="col-sm-6" style="margin-bottom:0px; height: 100%;line-height: 33px;">订单列表</label>
+
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search..." ng-model="searchText" ng-change="search()">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+
+                        <!--分页-->
+                        <ul class="pagination pagination-sm" style="marin:0px;">
+                            <li ng-class="{active:0}"><a href="#" ng-click="firstPage()">First</a>
+
+                            </li>
+                            <li ng-repeat="n in range(ItemsByPage.length)"> <a href="#" ng-click="setPage()" ng-bind="n+1">1</a>
+
+                            </li>
+                            <li><a href="#" ng-click="lastPage()">Last</a>
+
+                            </li>
+                        </ul>
+                        <!--/ 分页-->
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>订单编号</th>
+                                <!--<th>-->
+                                    <!--<a href="" ng-click="sort('ordCollName')" > 被检测人姓名-->
+                                        <!--<span class="{{Header[1]}}"></span></a> </th>-->
+                                <th>被检测人姓名</th>
+                                <!--<th>-->
+                                    <!--<a href="" ng-click="sort('ordCollMobile')">被检测人联系方式-->
+                                        <!--<span class="{{Header[2]}}"></span></a>-->
+                                <!--</th>-->
+                                <th>被检测人联系方式</th>
+                                <th>订单创建人</th>
+                                <th>
+                                    <a href="" ng-click="sort('createTime')">订单创建时间
+                                        <span class="{{Header[3]}}"></span>
+                                    </a>
+                                </th>
+                                <th>操作项</th>
+                                <!--<th>订单状态</th>-->
+                                <!--<th>订单检测状态</th>-->
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="order in ItemsByPage[currentPage] | orderBy:columnToOrder:reverse" ui-sref-active="active">
+                                <td>{{$index+1}}</td>
+                                <td >{{order.orderId}}</td>
+                                <!--<td>{{order.xiniaoID}}</td>-->
+                                <td>{{order.ordCollName}}</td>
+                                <td>{{order.ordCollMobile}}</td>
+                                <td>{{order.ordCreateUserId}}</td>
+                                <td>{{order.createTime }}</td>
+                                <!--<td>{{order.ordCheckState}}</td>-->
+                                <!--<td>{{order.ordState}}</td>-->
+
+                                <td>
+                                    <a ui-sref="home.orderDetail({orderId: order.orderId})" class="btn btn-info">查看</a>
+                                    <a ng-click="launchSimpleModal(order)" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页-->
+                        <ul class="pagination pagination-sm">
+                            <li ng-class="{active:0}"><a  ng-click="firstPage()">First</a>
+
+                            </li>
+                            <li ng-repeat="n in range(ItemsByPage.length)"> <a ng-click="setPage()" ng-bind="n+1">1</a>
+
+                            </li>
+                            <li><a ng-click="lastPage()">Last</a>
+
+                            </li>
+                        </ul>
+                        <!--/ 分页-->
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+
+                <div>
+                    <a  ui-sref="home.orderAdd" style="margin: 0 0 15px 15px;" class="btn btn-info">新建订单</a>
+                </div>
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-6 -->
+    </div>

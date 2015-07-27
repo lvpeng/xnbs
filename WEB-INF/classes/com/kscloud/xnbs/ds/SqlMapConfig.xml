@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_check_item_list_SqlMap.xml"/>	
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_package_list_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_package_item_rel_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_order_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_request_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_task_list_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_detect_report_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_mail_list_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_order_mail_rel_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_sample_list_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_request_sample_rel_SqlMap.xml"/>
+    <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_request_package_rel_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_mail_sample_rel_SqlMap.xml"/>
+  
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_user_device_rel_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/sys_tab_role_list_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/sys_tab_role_resource_rel_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/sys_tab_user_list_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/sys_tab_user_role_rel_SqlMap.xml"/>
+  <sqlMap resource="com/kscloud/xnbs/ds/sqlmap/xnbs_tab_acl_device_SqlMap.xml"/>
+  
+  <sqlMap resource="com/kscloud/xnbs/ds/udf/xnds_udf_SqlMap.xml"/>
+</sqlMapConfig>

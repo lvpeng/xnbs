@@ -1,0 +1,53 @@
+<table class="table movietable">
+    <tr>
+        <td><h3>订单详情</h3></td>
+
+    </tr>
+    <tr>
+        <td>订单编号</td>
+        <td>{{order.orderId}}</td>
+    </tr>
+    <tr>
+        <td>被检测人姓名</td>
+        <td>{{order.ordCollName}}</td>
+    </tr>
+    <tr>
+        <td>被检测人联系方式</td>
+        <td>{{order.ordCollMobile}}</td>
+    </tr>
+
+    <tr>
+        <td>订单创建人</td>
+        <td>{{order.ordCreateUserId}}</td>
+    </tr>
+    <!--<tr>-->
+        <!--<td>订单状态</td>-->
+        <!--<td>{{order.ordState}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>订单创建时间</td>-->
+        <!--<td>{{order.ordCreateTime | date:'yyyy/MM/dd' }}</td>-->
+    <!--</tr>-->
+    <tr>
+        <td>工单列表</td>
+        <td>
+            <ul>
+                <li style="cursor: pointer;" ng-repeat="request in requests">
+                    <a ui-sref="home.reqDetail({reqId:request.requestId})">{{request.personName}}</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a ng-click="launchSimpleModal(request.requestId)" class="btn-sm btn-danger">删除</a>
+                    <br>
+                </li>
+
+            </ul>
+            <button class="btn-sm btn-primary" ui-sref="home.reqAdd({orderId: order.orderId})">添加工单</button>
+        </td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="home.orderEdit({orderId:order.orderId})">Edit</a>
+    <!--<a ng-click="grabTask(task)"  class="btn btn-info">抢单</a>-->
+    <!--<a ng-click="completeTask(task)" class="btn btn-warning">完成任务</a>-->
+</div>
+
+
